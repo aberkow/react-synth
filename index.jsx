@@ -1,23 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import tone from 'tone';
-import nx from './nxOnLoad';
+import Keyboard from './components/Keyboard';
+import SynthControls from './components/SynthControls';
 
-class Keyboard extends React.Component {
-  //all nexusUI elements need to use data-nx with React.
-  //be sure to change the manager.prototype.transform function
-  constructor(props){
-    super(props);
-  }
-  render(){
-    return(
-      <div className='keyboard'>
-        <canvas id="keyboard" class='keyboard__ui' data-nx='keyboard' ></canvas>
-      </div>
-    );
-  }
-}
+import tone from 'tone';
+import nx from './js/nxOnLoad';
 
 class Container extends React.Component {
   constructor(props){
@@ -29,11 +17,13 @@ class Container extends React.Component {
     nx;
   }
 
+
   render(){
     return(
       <div className='container' >
         <h1>React Synth</h1>
         <Keyboard />
+        <SynthControls />
       </div>
     )
   }

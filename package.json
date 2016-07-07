@@ -2,7 +2,7 @@
   "name": "react-synth",
   "version": "1.0.0",
   "description": "A test to combine react with nexusUI audio components",
-  "main": "js/index.jsx",
+  "main": "index.jsx",
   "scripts": {
     "dev-server": "./node_modules/.bin/webpack-dev-server --content-base build --inline --hot --port 3000",
     "webpack-watch": "webpack --watch",
