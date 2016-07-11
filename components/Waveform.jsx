@@ -1,16 +1,16 @@
 import React from 'react';
 
-class Sampler extends React.Component{
+class Waveform extends React.Component{
   constructor(props){
     super(props);
   }
   render(){
     return(
-      <div className='sampler'>
-        <canvas nx='waveform'></canvas>
+      <div className='waveform'>
+        <canvas data-nx='waveform'></canvas>
       </div>
     );
   }
-}
+};
 
 module.exports = Waveform;

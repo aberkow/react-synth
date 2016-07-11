@@ -20577,9 +20577,9 @@
 	        'div',
 	        { className: 'voiceWave__wrapper', __self: this
 	        },
-	        _react2.default.createElement('canvas', { className: 'synthControls__waves', nx: 'select', id: 'voiceWave1', __self: this
+	        _react2.default.createElement('canvas', { className: 'synthControls__waves', 'data-nx': 'select', id: 'voiceWave1', __self: this
 	        }),
-	        _react2.default.createElement('canvas', { className: 'synthControls__waves', nx: 'select', id: 'voiceWave2', __self: this
+	        _react2.default.createElement('canvas', { className: 'synthControls__waves', 'data-nx': 'select', id: 'voiceWave2', __self: this
 	        })
 	      );
 	    }
@@ -20612,30 +20612,32 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Sampler = function (_React$Component) {
-	  _inherits(Sampler, _React$Component);
+	var Waveform = function (_React$Component) {
+	  _inherits(Waveform, _React$Component);
 	
-	  function Sampler(props) {
-	    _classCallCheck(this, Sampler);
+	  function Waveform(props) {
+	    _classCallCheck(this, Waveform);
 	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Sampler).call(this, props));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Waveform).call(this, props));
 	  }
 	
-	  _createClass(Sampler, [{
+	  _createClass(Waveform, [{
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'sampler', __self: this
+	        { className: 'waveform', __self: this
 	        },
-	        _react2.default.createElement('canvas', { nx: 'waveform', __self: this
+	        _react2.default.createElement('canvas', { 'data-nx': 'waveform', __self: this
 	        })
 	      );
 	    }
 	  }]);
 	
-	  return Sampler;
+	  return Waveform;
 	}(_react2.default.Component);
+	
+	;
 	
 	module.exports = Waveform;
 
@@ -40336,7 +40338,7 @@
 	var tone = __webpack_require__(172);
 	var duoSynth = __webpack_require__(174);
 	
-	// var voiceWaveConfig = require('./synth/voiceWaveConfig');
+	var voiceWaveConfig = __webpack_require__(175);
 	//synth needs to be created outside of nx.onload.
 	//otherwise the synth won't release the note.
 	// var synth = new tone.MonoSynth().toMaster();
@@ -40357,16 +40359,16 @@
 	    }
 	  });
 	  //select waveforms for synthesizer
-	  // voiceWave1.choices = voiceWaveConfig.waveChoices;
-	  // voiceWave1.init(); //call init() to populate the select boxes. Doesn't work with react?
-	  // voiceWave2.choices = voiceWaveConfig.waveChoices;
-	  // voiceWave2.init();
-	  // voiceWave1.on('*', function(data){
-	  //   voiceWaveConfig.voiceWaveAssign0(data);
-	  // });
-	  // voiceWave2.on('*', function(data){
-	  //   voiceWaveConfig.voiceWaveAssign1(data);
-	  // });
+	  voiceWave1.choices = voiceWaveConfig.waveChoices;
+	  voiceWave1.init(); //call init() to populate the select boxes. Doesn't work with react?
+	  voiceWave2.choices = voiceWaveConfig.waveChoices;
+	  voiceWave2.init();
+	  voiceWave1.on('*', function (data) {
+	    voiceWaveConfig.voiceWaveAssign0(data);
+	  });
+	  voiceWave2.on('*', function (data) {
+	    voiceWaveConfig.voiceWaveAssign1(data);
+	  });
 	};
 	
 	module.exports = nx;
@@ -40382,6 +40384,26 @@
 	var duoSynth = new tone.DuoSynth().toMaster();
 	
 	module.exports = duoSynth;
+
+/***/ },
+/* 175 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var duoSynth = __webpack_require__(174);
+	
+	var voiceWaveConfig = {
+	  waveChoices: ['sine', 'sawtooth', 'square', 'triangle'],
+	  voiceWaveAssign0: function voiceWaveAssign0(data) {
+	    duoSynth.voice0.oscillator.type = data.text;
+	  },
+	  voiceWaveAssign1: function voiceWaveAssign1(data) {
+	    duoSynth.voice1.oscillator.type = data.text;
+	  }
+	};
+	
+	module.exports = voiceWaveConfig;
 
 /***/ }
 /******/ ]);
