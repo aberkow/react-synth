@@ -64,11 +64,11 @@
 	
 	var _SynthControls2 = _interopRequireDefault(_SynthControls);
 	
-	var _tone = __webpack_require__(172);
+	var _tone = __webpack_require__(171);
 	
 	var _tone2 = _interopRequireDefault(_tone);
 	
-	var _nxOnLoad = __webpack_require__(173);
+	var _nxOnLoad = __webpack_require__(172);
 	
 	var _nxOnLoad2 = _interopRequireDefault(_nxOnLoad);
 	
@@ -20586,8 +20586,7 @@
 	module.exports = SynthVoiceWave;
 
 /***/ },
-/* 171 */,
-/* 172 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;(function (root) {
@@ -40275,15 +40274,15 @@
 	} (this));
 
 /***/ },
-/* 173 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var tone = __webpack_require__(172);
-	var duoSynth = __webpack_require__(174);
+	var tone = __webpack_require__(171);
+	var duoSynth = __webpack_require__(173);
 	
-	var voiceWaveConfig = __webpack_require__(175);
+	var voiceWaveConfig = __webpack_require__(174);
 	//synth needs to be created outside of nx.onload.
 	//otherwise the synth won't release the note.
 	// var synth = new tone.MonoSynth().toMaster();
@@ -40319,24 +40318,24 @@
 	module.exports = nx;
 
 /***/ },
-/* 174 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var tone = __webpack_require__(172);
+	var tone = __webpack_require__(171);
 	
 	var duoSynth = new tone.DuoSynth().toMaster();
 	
 	module.exports = duoSynth;
 
 /***/ },
-/* 175 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var duoSynth = __webpack_require__(174);
+	var duoSynth = __webpack_require__(173);
 	
 	var voiceWaveConfig = {
 	  waveChoices: ['sine', 'sawtooth', 'square', 'triangle'],
