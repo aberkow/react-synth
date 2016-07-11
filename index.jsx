@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Keyboard from './components/Keyboard';
 import SynthControls from './components/SynthControls';
+import Waveform from './components/Waveform';
 
 import tone from 'tone';
 import nx from './js/nxOnLoad';
@@ -24,6 +25,7 @@ class Container extends React.Component {
         <h1>React Synth</h1>
         <Keyboard />
         <SynthControls />
+        <Waveform />
       </div>
     )
   }
