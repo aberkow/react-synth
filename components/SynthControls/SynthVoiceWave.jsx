@@ -11,8 +11,8 @@ class SynthVoiceWave extends React.Component{
   render(){
     return(
       <div className='voiceWave__wrapper'>
-        <canvas className='synthControls__waves' nx='select' id='voiceWave1'></canvas>
-        <canvas className='synthControls__waves' nx='select' id='voiceWave2'></canvas>
+        <canvas className='synthControls__waves' data-nx='select' id='voiceWave1'></canvas>
+        <canvas className='synthControls__waves' data-nx='select' id='voiceWave2'></canvas>
       </div>
     );
   }
