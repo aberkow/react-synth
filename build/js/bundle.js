@@ -20516,23 +20516,6 @@
 	  }
 	
 	  _createClass(Waveform, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      //refactor this into waveformConfig.js later.
-	      // var sampler = new tone.Sampler({
-	      //   0: '../js/waveform/studderSchool.wav'
-	      // }, {
-	      //   player: {
-	      //     loop: true,
-	      //   }
-	      // }).toMaster();
-	      //
-	      // tone.Buffer.on('load', function(){
-	      //   waveform1.setBuffer(sampler._buffers[0]._buffer);
-	      //   waveform1.select(0, 500);
-	      // });
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(

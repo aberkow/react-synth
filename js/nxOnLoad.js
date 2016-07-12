@@ -3,7 +3,7 @@ var duoSynth = require('./synth/duoSynth');
 
 var voiceWaveConfig = require('./synth/voiceWaveConfig');
 
-//synth needs to be created outside of nx.onload.
+//synth and sampler need to be created outside of nx.onload.
 //otherwise the synth won't release the note.
 
 
@@ -15,6 +15,7 @@ var sampler = new tone.Sampler({
   }
 }).toMaster();
 
+//loading samples needs to occur outside nx.onload but during componentWillMount
 tone.Buffer.on('load', function(){
   waveform1.setBuffer(sampler._buffers[0]._buffer);
   waveform1.select(0, 500);
