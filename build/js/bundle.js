@@ -62,13 +62,9 @@
 	
 	var _Synth2 = _interopRequireDefault(_Synth);
 	
-	var _tone = __webpack_require__(172);
+	var _Waveform = __webpack_require__(171);
 	
-	var _tone2 = _interopRequireDefault(_tone);
-	
-	var _nxOnLoad = __webpack_require__(173);
-	
-	var _nxOnLoad2 = _interopRequireDefault(_nxOnLoad);
+	var _Waveform2 = _interopRequireDefault(_Waveform);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -83,6 +79,9 @@
 	//import Waveform from './components/Waveform';
 	
 	
+	//import tone from 'tone';
+	//import nx from './js/nxOnLoad';
+	
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
 	
@@ -91,20 +90,32 @@
 	
 	    return _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
 	  }
+	  // componentWillMount(){
+	  //   nx;
+	  // }
+	
 	
 	  _createClass(App, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      _nxOnLoad2.default;
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'h1',
-	        { className: 'title', __self: this
+	        'div',
+	        {
+	          __self: this
 	        },
-	        'Cool Audio Stuff'
+	        _react2.default.createElement(
+	          'h1',
+	          { className: 'title', __self: this
+	          },
+	          'Cool Audio Stuff'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          {
+	            __self: this
+	          },
+	          this.props.children
+	        )
 	      );
 	    }
 	  }]);
@@ -143,19 +154,17 @@
 	    _reactRouter.Route,
 	    { path: '/', component: App, __self: undefined
 	    },
-	    _react2.default.createElement(
-	      _reactRouter.Route,
-	      { path: '/synth', component: App, __self: undefined
-	      },
-	      _react2.default.createElement(_reactRouter.IndexRoute, { component: _Synth2.default, __self: undefined
-	      })
-	    )
+	    _react2.default.createElement(_reactRouter.Route, { path: '/synth', component: _Synth2.default, __self: undefined
+	    }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/waveform', component: _Waveform2.default, __self: undefined
+	    })
 	  )
 	);
 	
 	// <Route path='/sampler' component={App}>
 	//   <IndexRoute component={Waveform} />
 	// </Route>
+	//<IndexRoute component={Synth} />
 	
 	document.addEventListener('DOMContentLoaded', function () {
 	  _reactDom2.default.render(routes, document.getElementById('app'));
@@ -20460,7 +20469,97 @@
 /* 168 */,
 /* 169 */,
 /* 170 */,
-/* 171 */,
+/* 171 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _tone = __webpack_require__(172);
+	
+	var _tone2 = _interopRequireDefault(_tone);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	//import waveformConfig from '../js/waveform/waveformConfig';
+	
+	
+	//import nxWaveformOnLoad from '../js/waveform/nxWaveformOnLoad';
+	
+	var Waveform = function (_React$Component) {
+	  _inherits(Waveform, _React$Component);
+	
+	  function Waveform(props) {
+	    _classCallCheck(this, Waveform);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Waveform).call(this, props));
+	  }
+	
+	  _createClass(Waveform, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      var sampler = new _tone2.default.Sampler({
+	        0: '../js/waveform/studderSchool.wav'
+	      }, {
+	        player: {
+	          loop: true
+	        }
+	      }).toMaster();
+	
+	      //loading samples needs to occur outside nx.onload but during componentWillMount
+	      _tone2.default.Buffer.on('load', function () {
+	        waveform1.setBuffer(sampler._buffers[0]._buffer);
+	        waveform1.select(0, 500);
+	      });
+	
+	      nx.onload = function () {
+	        //trigger the waveform sampler.
+	        toggle1.on('*', function (data) {
+	          if (data.value === 1) {
+	            sampler.triggerAttack('0');
+	          } else {
+	            sampler.triggerRelease();
+	          }
+	        });
+	        //control the length of the sampler loop.
+	        waveform1.on('*', function (data) {
+	          sampler.player.setLoopPoints(data.starttime / 1000, data.stoptime / 1000);
+	        });
+	      };
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'waveform', __self: this
+	        },
+	        _react2.default.createElement('canvas', { 'data-nx': 'toggle', __self: this
+	        }),
+	        _react2.default.createElement('canvas', { 'data-nx': 'waveform', __self: this
+	        })
+	      );
+	    }
+	  }]);
+	
+	  return Waveform;
+	}(_react2.default.Component);
+	
+	;
+	
+	module.exports = Waveform;
+
+/***/ },
 /* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -40149,80 +40248,7 @@
 	} (this));
 
 /***/ },
-/* 173 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var tone = __webpack_require__(172);
-	var duoSynth = __webpack_require__(174);
-	
-	//var keyboard = require('../components/Synth/Keyboard');
-	
-	var voiceWaveConfig = __webpack_require__(175);
-	
-	//synth and sampler need to be created outside of nx.onload.
-	//otherwise the synth won't release the note.
-	
-	// var sampler = new tone.Sampler({
-	//   0: '../js/waveform/studderSchool.wav'
-	// }, {
-	//   player: {
-	//     loop: true,
-	//   }
-	// }).toMaster();
-	//
-	// //loading samples needs to occur outside nx.onload but during componentWillMount
-	// tone.Buffer.on('load', function(){
-	//   waveform1.setBuffer(sampler._buffers[0]._buffer);
-	//   waveform1.select(0, 500);
-	// });
-	
-	nx.onload = function () {
-	  console.log('nx loaded');
-	  keyboard.on('*', function (data) {
-	    //create a new synth
-	    // var synth = new tone.MonoSynth().toMaster();
-	    var frequency;
-	    if (data.on > 0) {
-	      //convert the midi note to frequency
-	      frequency = nx.mtof(data.note);
-	      //trigger the synth at the frequency
-	      duoSynth.triggerAttack(frequency);
-	    } else if (data.on === 0) {
-	      duoSynth.triggerRelease();
-	    }
-	  });
-	  //select waveforms for synthesizer
-	  voiceWave1.choices = voiceWaveConfig.waveChoices;
-	  voiceWave1.init(); //call init() to populate the select boxes. Doesn't work with react?
-	  voiceWave2.choices = voiceWaveConfig.waveChoices;
-	  voiceWave2.init();
-	  voiceWave1.on('*', function (data) {
-	    voiceWaveConfig.voiceWaveAssign0(data);
-	  });
-	  voiceWave2.on('*', function (data) {
-	    voiceWaveConfig.voiceWaveAssign1(data);
-	  });
-	
-	  //trigger the waveform sampler.
-	  // toggle1.on('*', function(data){
-	  //   if (data.value === 1){
-	  //     sampler.triggerAttack('0');
-	  //   } else {
-	  //     sampler.triggerRelease();
-	  //   }
-	  // });
-	  //
-	  // //control the length of the sampler loop.
-	  // waveform1.on('*', function(data){
-	  //   sampler.player.setLoopPoints(data.starttime/1000, data.stoptime/1000);
-	  // });
-	};
-	
-	module.exports = nx;
-
-/***/ },
+/* 173 */,
 /* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -45895,6 +45921,14 @@
 	
 	var _SynthControls2 = _interopRequireDefault(_SynthControls);
 	
+	var _duoSynth = __webpack_require__(174);
+	
+	var _duoSynth2 = _interopRequireDefault(_duoSynth);
+	
+	var _voiceWaveConfig = __webpack_require__(175);
+	
+	var _voiceWaveConfig2 = _interopRequireDefault(_voiceWaveConfig);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -45902,6 +45936,9 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	//import nxSynthOnLoad from '../../js/synth/nxSynthOnLoad';
+	//import nx from '../../js/nxOnLoad';
 	
 	var Synth = function (_React$Component) {
 	  _inherits(Synth, _React$Component);
@@ -45913,6 +45950,33 @@
 	  }
 	
 	  _createClass(Synth, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      console.log('nxSynthOnLoad from Synth');
+	      nx.onload = function () {
+	        keyboard.on('*', function (data) {
+	          var frequency;
+	          if (data.on > 0) {
+	            frequency = nx.mtof(data.note);
+	            _duoSynth2.default.triggerAttack(frequency);
+	          } else if (data.on === 0) {
+	            _duoSynth2.default.triggerRelease();
+	          }
+	        });
+	        //select waveforms for synthesizer
+	        voiceWave1.choices = _voiceWaveConfig2.default.waveChoices;
+	        voiceWave1.init(); //call init() to populate the select boxes. Doesn't work with react?
+	        voiceWave2.choices = _voiceWaveConfig2.default.waveChoices;
+	        voiceWave2.init();
+	        voiceWave1.on('*', function (data) {
+	          _voiceWaveConfig2.default.voiceWaveAssign0(data);
+	        });
+	        voiceWave2.on('*', function (data) {
+	          _voiceWaveConfig2.default.voiceWaveAssign1(data);
+	        });
+	      };
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(

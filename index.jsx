@@ -6,20 +6,24 @@ import { Router, Route, hashHistory, IndexRoute, Link } from 'react-router';
 //import SynthControls from './components/SynthControls/SynthControls';
 //import Waveform from './components/Waveform';
 import Synth from './components/Synth/Synth';
+import Waveform from './components/Waveform';
 
-import tone from 'tone';
-import nx from './js/nxOnLoad';
+//import tone from 'tone';
+//import nx from './js/nxOnLoad';
 
 class App extends React.Component {
   constructor(props){
     super(props);
   }
-  componentWillMount(){
-    nx;
-  }
+  // componentWillMount(){
+  //   nx;
+  // }
   render(){
     return(
-      <h1 className='title'>Cool Audio Stuff</h1>
+      <div>
+        <h1 className='title'>Cool Audio Stuff</h1>
+        <div>{this.props.children}</div>
+      </div>
     );
   }
 };
@@ -48,10 +52,8 @@ class App extends React.Component {
 var routes = (
   <Router history={hashHistory}>
     <Route path='/' component={App}>
-      <Route path='/synth' component={App}>
-        <IndexRoute component={Synth} />
-      </Route>
-
+      <Route path='/synth' component={Synth} />
+      <Route path='/waveform' component={Waveform} />
     </Route>
   </Router>
 );
@@ -59,6 +61,7 @@ var routes = (
 // <Route path='/sampler' component={App}>
 //   <IndexRoute component={Waveform} />
 // </Route>
+//<IndexRoute component={Synth} />
 
 document.addEventListener('DOMContentLoaded', function(){
   ReactDOM.render(routes, document.getElementById('app'));
