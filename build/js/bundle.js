@@ -46562,13 +46562,10 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	//import waveformConfig from '../js/waveform/waveformConfig';
-	
-	
-	//import nxWaveformOnLoad from '../js/waveform/nxWaveformOnLoad';
 	
 	//set sampler as a global variable. refactor to separate file later
 	//a la duoSynth.js
+	
 	var sampler = new _tone2.default.Sampler({
 	  0: '../js/waveform/studderSchool.wav'
 	}, {
@@ -46594,27 +46591,26 @@
 	        waveform1.setBuffer(sampler._buffers[0]._buffer);
 	        waveform1.select(0, 500);
 	      });
+	
 	      //prepare the nx functions
 	      nx.onload = function () {
-	        //dial to control the pitch of the sampler
-	        //var samplerPitch;
 	
-	        //this still tries to set the value as NaN.
+	        //dial to control the pitch of the sampler
+	        var playbackRateValue;
 	        dial1.on('*', function (data) {
-	          var playbackRate = parseInt(data, 10);
-	          sampler.player._source.playbackRate.value = playbackRate;
+	          playbackRateValue = Math.round(data.value);
+	          sampler.player.playbackRate = playbackRateValue;
 	        });
 	
 	        //trigger the waveform sampler.
 	        toggle1.on('*', function (data) {
 	          if (data.value === 1) {
-	
 	            sampler.triggerAttack('0');
-	            //sampler.triggerAttack(samplerPitch);
 	          } else {
 	            sampler.triggerRelease();
 	          }
 	        });
+	
 	        //control the length of the sampler loop.
 	        waveform1.on('*', function (data) {
 	          sampler.player.setLoopPoints(data.starttime / 1000, data.stoptime / 1000);
@@ -46632,7 +46628,7 @@
 	        }),
 	        _react2.default.createElement('canvas', { 'data-nx': 'waveform', __self: this
 	        }),
-	        _react2.default.createElement('canvas', { 'data-nx': 'dial', min: '-12', max: '12', __self: this
+	        _react2.default.createElement('canvas', { 'data-nx': 'dial', min: '0', max: '12', __self: this
 	        })
 	      );
 	    }
