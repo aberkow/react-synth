@@ -28,6 +28,27 @@ class App extends React.Component {
   }
 };
 
+var routes = (
+  <Router history={hashHistory}>
+    <Route path='/' component={App}>
+      <Route path='/synth' component={Synth} />
+      <Route path='/waveform' component={Waveform} />
+    </Route>
+  </Router>
+);
+
+// <Route path='/sampler' component={App}>
+//   <IndexRoute component={Waveform} />
+// </Route>
+//<IndexRoute component={Synth} />
+
+document.addEventListener('DOMContentLoaded', function(){
+  ReactDOM.render(routes, document.getElementById('app'));
+});
+
+//<Container />
+
+
 // class Container extends React.Component {
 //   constructor(props){
 //     super(props);
@@ -48,23 +69,3 @@ class App extends React.Component {
 //     )
 //   }
 // }
-
-var routes = (
-  <Router history={hashHistory}>
-    <Route path='/' component={App}>
-      <Route path='/synth' component={Synth} />
-      <Route path='/waveform' component={Waveform} />
-    </Route>
-  </Router>
-);
-
-// <Route path='/sampler' component={App}>
-//   <IndexRoute component={Waveform} />
-// </Route>
-//<IndexRoute component={Synth} />
-
-document.addEventListener('DOMContentLoaded', function(){
-  ReactDOM.render(routes, document.getElementById('app'));
-});
-
-//<Container />
