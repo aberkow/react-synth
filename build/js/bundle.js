@@ -56,23 +56,23 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _Keyboard = __webpack_require__(168);
+	var _Keyboard = __webpack_require__(239);
 	
 	var _Keyboard2 = _interopRequireDefault(_Keyboard);
 	
-	var _SynthControls = __webpack_require__(169);
+	var _SynthControls = __webpack_require__(240);
 	
 	var _SynthControls2 = _interopRequireDefault(_SynthControls);
 	
-	var _Waveform = __webpack_require__(171);
+	var _Waveform = __webpack_require__(238);
 	
 	var _Waveform2 = _interopRequireDefault(_Waveform);
 	
-	var _tone = __webpack_require__(172);
+	var _tone = __webpack_require__(236);
 	
 	var _tone2 = _interopRequireDefault(_tone);
 	
-	var _nxOnLoad = __webpack_require__(173);
+	var _nxOnLoad = __webpack_require__(242);
 	
 	var _nxOnLoad2 = _interopRequireDefault(_nxOnLoad);
 	
@@ -20429,228 +20429,86 @@
 	module.exports = ReactMount.renderSubtreeIntoContainer;
 
 /***/ },
-/* 168 */
+/* 168 */,
+/* 169 */,
+/* 170 */,
+/* 171 */,
+/* 172 */,
+/* 173 */,
+/* 174 */,
+/* 175 */,
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */,
+/* 214 */,
+/* 215 */,
+/* 216 */,
+/* 217 */,
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */,
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */,
+/* 228 */,
+/* 229 */,
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */,
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	var tone = __webpack_require__(236);
 	
-	var _react = __webpack_require__(1);
+	var duoSynth = new tone.DuoSynth().toMaster();
 	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Keyboard = function (_React$Component) {
-	  _inherits(Keyboard, _React$Component);
-	
-	  //all nexusUI elements need to use data-nx with React.
-	  //be sure to change the manager.prototype.transform function
-	
-	  function Keyboard(props) {
-	    _classCallCheck(this, Keyboard);
-	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Keyboard).call(this, props));
-	  }
-	
-	  _createClass(Keyboard, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'keyboard', __self: this
-	        },
-	        _react2.default.createElement('canvas', { id: 'keyboard', 'class': 'keyboard__ui', 'data-nx': 'keyboard', __self: this
-	        })
-	      );
-	    }
-	  }]);
-	
-	  return Keyboard;
-	}(_react2.default.Component);
-	
-	module.exports = Keyboard;
+	module.exports = duoSynth;
 
 /***/ },
-/* 169 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var SynthVoiceWave = __webpack_require__(170);
-	
-	var SynthControls = function (_React$Component) {
-	  _inherits(SynthControls, _React$Component);
-	
-	  function SynthControls(props) {
-	    _classCallCheck(this, SynthControls);
-	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(SynthControls).call(this, props));
-	  }
-	
-	  _createClass(SynthControls, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'synthControls', __self: this
-	        },
-	        _react2.default.createElement(
-	          'h2',
-	          { className: 'synthControls__title', __self: this
-	          },
-	          'Synth Controls'
-	        ),
-	        _react2.default.createElement(SynthVoiceWave, {
-	          __self: this
-	        })
-	      );
-	    }
-	  }]);
-	
-	  return SynthControls;
-	}(_react2.default.Component);
-	
-	;
-	
-	module.exports = SynthControls;
-
-/***/ },
-/* 170 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var SynthVoiceWave = function (_React$Component) {
-	  _inherits(SynthVoiceWave, _React$Component);
-	
-	  function SynthVoiceWave(props) {
-	    _classCallCheck(this, SynthVoiceWave);
-	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(SynthVoiceWave).call(this, props));
-	  }
-	  // componentDidMount(){
-	  //   voiceWave1.init();
-	  //   voiceWave2.init();
-	  // }
-	
-	
-	  _createClass(SynthVoiceWave, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'voiceWave__wrapper', __self: this
-	        },
-	        _react2.default.createElement('canvas', { className: 'synthControls__waves', 'data-nx': 'select', id: 'voiceWave1', __self: this
-	        }),
-	        _react2.default.createElement('canvas', { className: 'synthControls__waves', 'data-nx': 'select', id: 'voiceWave2', __self: this
-	        })
-	      );
-	    }
-	  }]);
-	
-	  return SynthVoiceWave;
-	}(_react2.default.Component);
-	
-	;
-	
-	module.exports = SynthVoiceWave;
-
-/***/ },
-/* 171 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _tone = __webpack_require__(172);
-	
-	var _tone2 = _interopRequireDefault(_tone);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	//import waveformConfig from '../js/waveform/waveformConfig';
-	
-	
-	var Waveform = function (_React$Component) {
-	  _inherits(Waveform, _React$Component);
-	
-	  function Waveform(props) {
-	    _classCallCheck(this, Waveform);
-	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Waveform).call(this, props));
-	  }
-	
-	  _createClass(Waveform, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'waveform', __self: this
-	        },
-	        _react2.default.createElement('canvas', { 'data-nx': 'toggle', __self: this
-	        }),
-	        _react2.default.createElement('canvas', { 'data-nx': 'waveform', __self: this
-	        })
-	      );
-	    }
-	  }]);
-	
-	  return Waveform;
-	}(_react2.default.Component);
-	
-	;
-	
-	module.exports = Waveform;
-
-/***/ },
-/* 172 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;(function (root) {
@@ -40338,15 +40196,256 @@
 	} (this));
 
 /***/ },
-/* 173 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var tone = __webpack_require__(172);
-	var duoSynth = __webpack_require__(174);
+	var duoSynth = __webpack_require__(235);
 	
-	var voiceWaveConfig = __webpack_require__(175);
+	var voiceWaveConfig = {
+	  waveChoices: ['sine', 'sawtooth', 'square', 'triangle'],
+	  voiceWaveAssign0: function voiceWaveAssign0(data) {
+	    duoSynth.voice0.oscillator.type = data.text;
+	  },
+	  voiceWaveAssign1: function voiceWaveAssign1(data) {
+	    duoSynth.voice1.oscillator.type = data.text;
+	  }
+	};
+	
+	module.exports = voiceWaveConfig;
+
+/***/ },
+/* 238 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _tone = __webpack_require__(236);
+	
+	var _tone2 = _interopRequireDefault(_tone);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	//import waveformConfig from '../js/waveform/waveformConfig';
+	
+	
+	var Waveform = function (_React$Component) {
+	  _inherits(Waveform, _React$Component);
+	
+	  function Waveform(props) {
+	    _classCallCheck(this, Waveform);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Waveform).call(this, props));
+	  }
+	
+	  _createClass(Waveform, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'waveform', __self: this
+	        },
+	        _react2.default.createElement('canvas', { 'data-nx': 'toggle', __self: this
+	        }),
+	        _react2.default.createElement('canvas', { 'data-nx': 'waveform', __self: this
+	        })
+	      );
+	    }
+	  }]);
+	
+	  return Waveform;
+	}(_react2.default.Component);
+	
+	;
+	
+	module.exports = Waveform;
+
+/***/ },
+/* 239 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Keyboard = function (_React$Component) {
+	  _inherits(Keyboard, _React$Component);
+	
+	  //all nexusUI elements need to use data-nx with React.
+	  //be sure to change the manager.prototype.transform function
+	
+	  function Keyboard(props) {
+	    _classCallCheck(this, Keyboard);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Keyboard).call(this, props));
+	  }
+	
+	  _createClass(Keyboard, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'keyboard', __self: this
+	        },
+	        _react2.default.createElement('canvas', { id: 'keyboard', 'class': 'keyboard__ui', 'data-nx': 'keyboard', __self: this
+	        })
+	      );
+	    }
+	  }]);
+	
+	  return Keyboard;
+	}(_react2.default.Component);
+	
+	module.exports = Keyboard;
+
+/***/ },
+/* 240 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var SynthVoiceWave = __webpack_require__(241);
+	
+	var SynthControls = function (_React$Component) {
+	  _inherits(SynthControls, _React$Component);
+	
+	  function SynthControls(props) {
+	    _classCallCheck(this, SynthControls);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(SynthControls).call(this, props));
+	  }
+	
+	  _createClass(SynthControls, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'synthControls', __self: this
+	        },
+	        _react2.default.createElement(
+	          'h2',
+	          { className: 'synthControls__title', __self: this
+	          },
+	          'Synth Controls'
+	        ),
+	        _react2.default.createElement(SynthVoiceWave, {
+	          __self: this
+	        })
+	      );
+	    }
+	  }]);
+	
+	  return SynthControls;
+	}(_react2.default.Component);
+	
+	;
+	
+	module.exports = SynthControls;
+
+/***/ },
+/* 241 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var SynthVoiceWave = function (_React$Component) {
+	  _inherits(SynthVoiceWave, _React$Component);
+	
+	  function SynthVoiceWave(props) {
+	    _classCallCheck(this, SynthVoiceWave);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(SynthVoiceWave).call(this, props));
+	  }
+	  // componentDidMount(){
+	  //   voiceWave1.init();
+	  //   voiceWave2.init();
+	  // }
+	
+	
+	  _createClass(SynthVoiceWave, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'voiceWave__wrapper', __self: this
+	        },
+	        _react2.default.createElement('canvas', { className: 'synthControls__waves', 'data-nx': 'select', id: 'voiceWave1', __self: this
+	        }),
+	        _react2.default.createElement('canvas', { className: 'synthControls__waves', 'data-nx': 'select', id: 'voiceWave2', __self: this
+	        })
+	      );
+	    }
+	  }]);
+	
+	  return SynthVoiceWave;
+	}(_react2.default.Component);
+	
+	;
+	
+	module.exports = SynthVoiceWave;
+
+/***/ },
+/* 242 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var tone = __webpack_require__(236);
+	var duoSynth = __webpack_require__(235);
+	
+	var voiceWaveConfig = __webpack_require__(237);
 	
 	//synth and sampler need to be created outside of nx.onload.
 	//otherwise the synth won't release the note.
@@ -40408,38 +40507,6 @@
 	};
 	
 	module.exports = nx;
-
-/***/ },
-/* 174 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var tone = __webpack_require__(172);
-	
-	var duoSynth = new tone.DuoSynth().toMaster();
-	
-	module.exports = duoSynth;
-
-/***/ },
-/* 175 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var duoSynth = __webpack_require__(174);
-	
-	var voiceWaveConfig = {
-	  waveChoices: ['sine', 'sawtooth', 'square', 'triangle'],
-	  voiceWaveAssign0: function voiceWaveAssign0(data) {
-	    duoSynth.voice0.oscillator.type = data.text;
-	  },
-	  voiceWaveAssign1: function voiceWaveAssign1(data) {
-	    duoSynth.voice1.oscillator.type = data.text;
-	  }
-	};
-	
-	module.exports = voiceWaveConfig;
 
 /***/ }
 /******/ ]);
