@@ -4,10 +4,6 @@ class SynthVoiceWave extends React.Component{
   constructor(props){
     super(props);
   }
-  // componentDidMount(){
-  //   voiceWave1.init();
-  //   voiceWave2.init();
-  // }
   render(){
     return(
       <div className='voiceWave__wrapper'>

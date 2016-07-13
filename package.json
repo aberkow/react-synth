@@ -12,8 +12,11 @@
   "license": "ISC",
   "dependencies": {
     "jquery": "^3.0.0",
+    "material-ui": "^0.15.2",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
+    "react-router": "^2.5.2",
+    "react-tap-event-plugin": "^1.0.0",
     "tone": "^0.6.1"
   },
   "devDependencies": {

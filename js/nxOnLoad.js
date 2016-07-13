@@ -1,6 +1,8 @@
 var tone = require('tone');
 var duoSynth = require('./synth/duoSynth');
 
+//var keyboard = require('../components/Synth/Keyboard');
+
 var voiceWaveConfig = require('./synth/voiceWaveConfig');
 
 //synth and sampler need to be created outside of nx.onload.

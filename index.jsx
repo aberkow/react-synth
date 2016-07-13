@@ -1,36 +1,70 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Router, Route, hashHistory, IndexRoute, Link } from 'react-router';
 
-import Keyboard from './components/Keyboard';
-import SynthControls from './components/SynthControls/SynthControls';
+//import Keyboard from './components/Keyboard';
+//import SynthControls from './components/SynthControls/SynthControls';
+//import Waveform from './components/Waveform';
+import Synth from './components/Synth/Synth';
 import Waveform from './components/Waveform';
 
-import tone from 'tone';
-import nx from './js/nxOnLoad';
+//import tone from 'tone';
+//import nx from './js/nxOnLoad';
 
-class Container extends React.Component {
+class App extends React.Component {
   constructor(props){
     super(props);
-
   }
-  componentWillMount(){
-    console.log('componentWillMount');
-    nx;
-  }
-
-
+  // componentWillMount(){
+  //   nx;
+  // }
   render(){
     return(
-      <div className='container' >
-        <h1>React Synth</h1>
-        <Keyboard />
-        <SynthControls />
-        <Waveform />
+      <div>
+        <h1 className='title'>Cool Audio Stuff</h1>
+        <div>{this.props.children}</div>
       </div>
-    )
+    );
   }
-}
+};
+
+// class Container extends React.Component {
+//   constructor(props){
+//     super(props);
+//
+//   }
+//   componentWillMount(){
+//     console.log('componentWillMount');
+//     nx;
+//   }
+//   render(){
+//     return(
+//       <div className='container' >
+//         <h1>React Synth</h1>
+//         <Keyboard />
+//         <SynthControls />
+//         <Waveform />
+//       </div>
+//     )
+//   }
+// }
+
+var routes = (
+  <Router history={hashHistory}>
+    <Route path='/' component={App}>
+      <Route path='/synth' component={Synth} />
+      <Route path='/waveform' component={Waveform} />
+    </Route>
+  </Router>
+);
+
+// <Route path='/sampler' component={App}>
+//   <IndexRoute component={Waveform} />
+// </Route>
+//<IndexRoute component={Synth} />
 
 document.addEventListener('DOMContentLoaded', function(){
-  ReactDOM.render(<Container />, document.getElementById('app'));
+  ReactDOM.render(routes, document.getElementById('app'));
 });
+
+//<Container />
