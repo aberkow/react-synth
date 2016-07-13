@@ -11,6 +11,8 @@ var sampler = new tone.Sampler({
 }, {
   player: {
     loop: true,
+    //trying the tone.player property instead
+
   }
 }).toMaster();
 
@@ -27,17 +29,20 @@ class Waveform extends React.Component{
     //prepare the nx functions
     nx.onload = function(){
       //dial to control the pitch of the sampler
-      // var samplerPitch;
+      //var samplerPitch;
 
+      //this still tries to set the value as NaN.
       dial1.on('*', function(data){
-        var samplerPitch = data.value.toString();
-        return samplerPitch;
-        console.log(samplerPitch, 'from dial');
+        var playbackRate = parseInt(data, 10);
+        sampler.player._source.playbackRate.value = playbackRate;
       });
+
 
       //trigger the waveform sampler.
       toggle1.on('*', function(data){
         if (data.value === 1){
+
+
           sampler.triggerAttack('0');
           //sampler.triggerAttack(samplerPitch);
         } else {
