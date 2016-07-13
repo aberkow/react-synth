@@ -19,15 +19,27 @@ class Waveform extends React.Component{
     super(props);
   }
   componentWillMount(){
+    //load the buffer with a sample
     tone.Buffer.on('load', function(){
       waveform1.setBuffer(sampler._buffers[0]._buffer);
       waveform1.select(0, 500);
     });
+    //prepare the nx functions
     nx.onload = function(){
+      //dial to control the pitch of the sampler
+      // var samplerPitch;
+
+      dial1.on('*', function(data){
+        var samplerPitch = data.value.toString();
+        return samplerPitch;
+        console.log(samplerPitch, 'from dial');
+      });
+
       //trigger the waveform sampler.
       toggle1.on('*', function(data){
         if (data.value === 1){
           sampler.triggerAttack('0');
+          //sampler.triggerAttack(samplerPitch);
         } else {
           sampler.triggerRelease();
         }
@@ -38,35 +50,12 @@ class Waveform extends React.Component{
       });
     }
   }
-
-  componentDidMount(){
-
-    //loading samples needs to occur outside nx.onload but during componentWillMount
-    // tone.Buffer.on('load', function(){
-    //   waveform1.setBuffer(sampler._buffers[0]._buffer);
-    //   waveform1.select(0, 500);
-    // });
-
-    // nx.onload = function(){
-    //   //trigger the waveform sampler.
-    //   toggle1.on('*', function(data){
-    //     if (data.value === 1){
-    //       sampler.triggerAttack('0');
-    //     } else {
-    //       sampler.triggerRelease();
-    //     }
-    //   });
-    //   //control the length of the sampler loop.
-    //   waveform1.on('*', function(data){
-    //     sampler.player.setLoopPoints(data.starttime/1000, data.stoptime/1000);
-    //   });
-    // }
-  }
   render(){
     return(
       <div className='waveform'>
         <canvas data-nx='toggle'></canvas>
         <canvas data-nx='waveform'></canvas>
+        <canvas data-nx='dial' min='-12' max='12'></canvas>
       </div>
     );
   }
