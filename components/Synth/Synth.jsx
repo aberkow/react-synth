@@ -14,7 +14,7 @@ import voiceWaveConfig from '../../js/synth/voiceWaveConfig';
 
 class Synth extends React.Component{
   constructor(props){
-    super(props);
+    super(props);  
   }
   componentWillMount(){
     console.log('nxSynthOnLoad from Synth');
@@ -99,6 +99,7 @@ class Synth extends React.Component{
       });
     };
   }
+
   render(){
     return(
       <div>
