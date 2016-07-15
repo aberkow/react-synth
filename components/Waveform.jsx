@@ -1,6 +1,6 @@
 import React from 'react';
 import tone from 'tone';
-
+// import studderSchool from '../js/waveform/studderSchool.wav';
 //set sampler as a global variable. refactor to separate file later
 //a la duoSynth.js
 

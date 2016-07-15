@@ -11,6 +11,17 @@ import Waveform from './components/Waveform';
 //import tone from 'tone';
 //import nx from './js/nxOnLoad';
 
+// class Test extends React.Component {
+//   constructor(props){
+//     super(props);
+//   }
+//   render(){
+//     return(
+//       <h2>Test</h2>
+//     );
+//   }
+// };
+
 class App extends React.Component {
   constructor(props){
     super(props);
@@ -27,7 +38,12 @@ class App extends React.Component {
     );
   }
 };
-
+//instrument route?
+// /instruments (contains the general effects)
+//    /synth
+//    /waveform
+//instrument route - within synth, waveform, etc...
+//
 var routes = (
   <Router history={hashHistory}>
     <Route path='/' component={App}>
