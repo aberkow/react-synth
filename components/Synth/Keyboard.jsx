@@ -9,7 +9,7 @@ class Keyboard extends React.Component {
   render(){
     return(
       <div className='keyboard'>
-        <canvas id="keyboard" className='keyboard__ui' data-nx='keyboard' ></canvas>
+        <canvas id="keyboard" className='keyboard__ui' data-nx='keyboard' height="150" width="600" style="width: 300px; height: 75px;"></canvas>
       </div>
     );
   }

@@ -1,8 +1,8 @@
 import React from 'react';
 
 //Components
-import Keyboard from './Keyboard';
-import SynthControls from './SynthControls/SynthControls';
+// import Keyboard from './Keyboard';
+//import SynthControls from './SynthControls/SynthControls';
 
 //synth and config files
 import duoSynth from '../../js/synth/duoSynth';
@@ -15,9 +15,12 @@ import voiceWaveConfig from '../../js/synth/voiceWaveConfig';
 class Synth extends React.Component{
   constructor(props){
     super(props);
+    //this.loadOnce = this.loadOnce.bind(this);
   }
+
   componentWillMount(){
     console.log('nxSynthOnLoad from Synth');
+
     nx.onload = function(){
       keyboard.on('*', function(data){
         var frequency;
@@ -98,15 +101,50 @@ class Synth extends React.Component{
         qAndFreqConfig.qFreq1(data);
       });
     };
+    //window.addEventListener('load', nx.onload());
   }
+  // loadOnce(){
+  //   window.location.hash.reload();
+  // } onLoad={this.loadOnce}
   render(){
+
     return(
       <div>
-        <Keyboard />
-        <SynthControls />
+        <h2>Load Test</h2>
+          
+          <div className='keyboard'>
+            <canvas id="keyboard" className='keyboard__ui nx' data-nx='keyboard'  height="150" width="600"></canvas>
+          </div>
+          <div className='voiceWave__wrapper'>
+            <canvas className='synthControls__waves' data-nx='select' id='voiceWave1'></canvas>
+            <canvas className='synthControls__waves' data-nx='select' id='voiceWave2'></canvas>
+          </div>
+          <div>
+            <canvas className='synthControls__envelope' data-nx='envelope' id='asdr1'></canvas>
+            <canvas className='synthControls__envelope' data-nx='envelope' id='asdr2'></canvas>
+          </div>
+          <div>
+            <canvas className='position' data-nx='position' id='vibrato'></canvas>
+            <canvas className='synthControls__dial' data-nx='dial' id='harmonicity'></canvas>
+          </div>
+          <div>
+            <canvas className='synthControls__filters' data-nx='select' id='filterType1'></canvas>
+            <canvas className='synthControls__filters' data-nx='select' id='filterType2'></canvas>
+          </div>
+          <div>
+            <canvas class="synthControls__envelope" data-nx='envelope' id="filterAsdr1"></canvas>
+            <canvas class="synthControls__envelope" data-nx='envelope' id="filterAsdr2"></canvas>
+          </div>
+          <div>
+            <canvas id="qAndFreq1" data-nx='position' class="position"></canvas>
+            <canvas id="qAndFreq2" data-nx='position' class="position"></canvas>
+          </div>
       </div>
     );
   }
 };
+
+// <Keyboard />
+// <SynthControls />
 
 module.exports = Synth;
